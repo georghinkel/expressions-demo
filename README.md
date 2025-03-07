@@ -1,2 +1,3 @@
 # basta-spring-2025
-Todo Application using Binding to Query
+
+This repository contains the example application demonstrating incremental queries, in particular using them for data binding to a query in a WPF or Avalonia desktop application.
