@@ -1,0 +1,81 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:AvaloniaTodoListApplication.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaTodoListApplication.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="AvaloniaTodoListApplication">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+	<DockPanel>
+		<Button DockPanel.Dock="Bottom" Command="{Binding AddProjectCommand}">Add Project</Button>
+		<ItemsControl ItemsSource="{Binding Projects}">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Grid Margin="10" Background="DarkGray">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="2*" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Label HorizontalAlignment="Right">Name</Label>
+						<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+						<Label HorizontalAlignment="Right" Grid.Row="1">Is on Hold</Label>
+						<ToggleButton Grid.Row="1" Grid.Column="1" IsChecked="{Binding IsOnHold}" />
+						<Label HorizontalAlignment="Right" Grid.Row="2">Todos</Label>
+						<ItemsControl ItemsSource="{Binding Todos}" Grid.Column="1" Grid.Row="2">
+							<ItemsControl.ItemTemplate>
+								<DataTemplate>
+									<TextBox Text="{Binding Text}" />
+								</DataTemplate>
+							</ItemsControl.ItemTemplate>
+						</ItemsControl>
+						<Button Command="{Binding AddTodoCommand}" Grid.Row="3" Grid.Column="1">Add Todo</Button>
+					</Grid>					
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</DockPanel>
+		<ItemsControl ItemsSource="{Binding TodosInOrder}" Grid.Column="1">
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Grid Margin="10" Background="DarkGray">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="2*" />
+						</Grid.ColumnDefinitions>
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
+						</Grid.RowDefinitions>
+						<Label HorizontalAlignment="Right">Title</Label>
+						<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Text}" />
+						<Label HorizontalAlignment="Right" Grid.Row="1">Priority</Label>
+						<ComboBox ItemsSource="{Binding Priorities}" SelectedItem="{Binding Priority}" Grid.Row="1" Grid.Column="1" />
+						<Label HorizontalAlignment="Right" Grid.Row="2">Deadline</Label>
+						<DatePicker SelectedDate="{Binding Deadline}" Grid.Column="1" Grid.Row="2" />
+						<CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding IsDone}">Is Done</CheckBox>
+					</Grid>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</Grid>
+</Window>
