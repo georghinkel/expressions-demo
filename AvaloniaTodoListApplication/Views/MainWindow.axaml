@@ -65,6 +65,7 @@
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="Auto" />
+							<RowDefinition Height="Auto" />
 						</Grid.RowDefinitions>
 						<Label HorizontalAlignment="Right">Title</Label>
 						<TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Text}" />
