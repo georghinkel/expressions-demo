@@ -22,12 +22,14 @@ namespace WpfTodoListApplication.ViewModels
 
         public MainWindowViewModel()
         {
+            ObservableExtensions.KeepOrder = true;
+
             TodosInOrder =
                    (from p in Projects.WithUpdates()
                     where !p.IsOnHold
                     from t in p.Todos
                     where !t.IsDone
-                    orderby t.Priority ascending, t.Deadline ?? EndOfTime
+                    orderby t.Priority descending, t.Deadline ?? EndOfTime
                     select t).RestoreIndices();
         }
 
