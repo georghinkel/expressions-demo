@@ -1,3 +1,3 @@
-# basta-spring-2025
+# NMF Expressions Demo
 
-This repository contains the example application demonstrating incremental queries, in particular using them for data binding to a query in a WPF or Avalonia desktop application.
+This repository contains example applications demonstrating incremental queries, in particular using them for data binding to a query in a WPF or Avalonia desktop application and in a web application using GraphQL via HotChocolate.
