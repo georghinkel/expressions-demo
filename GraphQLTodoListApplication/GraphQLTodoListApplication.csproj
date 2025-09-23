@@ -9,7 +9,7 @@
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.10" />
-    <PackageReference Include="NMF-Expressions" Version="2.0.457" />
+    <PackageReference Include="NMF-Expressions" Version="2.1.0" />
   </ItemGroup>
 
 </Project>

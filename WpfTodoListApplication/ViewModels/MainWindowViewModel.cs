@@ -22,8 +22,6 @@ namespace WpfTodoListApplication.ViewModels
 
         public MainWindowViewModel()
         {
-            ObservableExtensions.KeepOrder = true;
-
             TodosInOrder =
                    (from p in Projects.WithUpdates()
                     where !p.IsOnHold

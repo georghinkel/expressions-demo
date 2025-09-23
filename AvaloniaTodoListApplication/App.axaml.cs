@@ -5,7 +5,6 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using AvaloniaTodoListApplication.ViewModels;
 using AvaloniaTodoListApplication.Views;
-using NMF.Expressions.Linq;
 using System.Linq;
 
 namespace AvaloniaTodoListApplication
@@ -14,7 +13,6 @@ namespace AvaloniaTodoListApplication
     {
         public override void Initialize()
         {
-            ObservableExtensions.KeepOrder = true;
             AvaloniaXamlLoader.Load(this);
         }
 
