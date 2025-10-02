@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiTodoListApplication.MainPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <Grid ColumnDefinitions="*,*">
+        <toolkit:DockLayout Grid.Column="0">
+            <Button toolkit:DockLayout.DockPosition="Bottom" Command="{Binding AddProjectCommand}" Text="Add Project" />
+            <CollectionView ItemsSource="{Binding Projects}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="10" Background="LightYellow">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Label>Name</Label>
+                            <Entry Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+                            <Label Grid.Row="1">Is on Hold</Label>
+                            <Switch Grid.Row="1" Grid.Column="1" IsToggled="{Binding IsOnHold}" />
+                            <Label Grid.Row="2">Todos</Label>
+                            <CollectionView ItemsSource="{Binding Todos}" Grid.Column="1" Grid.Row="2">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Entry Text="{Binding Text}" />
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                            <Button Command="{Binding AddTodoCommand}" Grid.Row="3" Grid.Column="1" Text="Add Todo" />
+                        </Grid>
+                    </DataTemplate>
+
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </toolkit:DockLayout>
+        <CollectionView Grid.Column="1" ItemsSource="{Binding TodosInOrder}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="10" Background="LightYellow">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label>Title</Label>
+                        <Entry Grid.Column="1" Grid.Row="0" Text="{Binding Text}" />
+                        <Label Grid.Row="1">Priority</Label>
+                        <Picker ItemsSource="{Binding Priorities}" SelectedItem="{Binding Priority}" Grid.Row="1" Grid.Column="1" />
+                        <Label Grid.Row="2">Deadline</Label>
+                        <DatePicker Date="{Binding Deadline}" Grid.Column="1" Grid.Row="2" />
+                        <Label Grid.Row="3">Is Done</Label>
+                        <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding IsDone}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

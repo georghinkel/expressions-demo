@@ -15,7 +15,6 @@ namespace GraphQLTodoListApplication.Models
         public Database()
         {
             var endOfTime = DateTime.MaxValue;
-            ObservableExtensions.KeepOrder = true;
 
             TodosInOrder =
                      from p in Projects.WithUpdates()

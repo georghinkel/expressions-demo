@@ -2,7 +2,7 @@
 using NMF.Expressions.Linq;
 using System.Collections.ObjectModel;
 
-namespace WpfTodoListApplication.ViewModels
+namespace MauiTodoListApplication.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
